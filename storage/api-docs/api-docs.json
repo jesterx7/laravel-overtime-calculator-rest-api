@@ -1,0 +1,38 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "My First API",
+        "version": "0.1"
+    },
+    "paths": {
+        "/api/employee": {
+            "post": {
+                "summary": "Store new Employee",
+                "description": "Returns project data",
+                "operationId": "c496f57d3496b7fe0d813ad937cb57fd",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "App/Requests/StoreEmployeeRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "App/Requests/StoreEmployeeRequest"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
