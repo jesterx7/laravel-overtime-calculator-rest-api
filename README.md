@@ -52,3 +52,7 @@
 ## How to Run Test
 
 - Run php artisan test
+
+## Open Swagger
+
+- Open  http://127.0.0.1:8000/api/documentation (Not Done)
