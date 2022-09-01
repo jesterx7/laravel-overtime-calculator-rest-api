@@ -7,58 +7,48 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## How to Install
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Open cmd and go to your desired folder path
+- Run git clone https://github.com/jesterx7/laravel-overtime-calculator-rest-api.git
+- Run cd laravel-overtime-calculator-rest-api
+- Run composer install
+- Rename .env.example to .env
+- Create database and name it 'kledo' and create one more with 'kledo_testing' for test database.
+- Open your .env file and change the database name (DB_DATABASE) to 'kledo' then change username (DB_USERNAME) and password (DB_PASSWORD) field correspond to your configuration
+- Run php artisan migrate
+- Run php artisan db:seed
+- Run php artisan serve 
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Store Employee API
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Open Postman
+- Change method to POST and enter url http://127.0.0.1:8000/api/employees
+- Put Parameter on Body > form-data > name (string, ex: jackie) and salary (number, ex: 3000000)
+- Click send to store new Employee
 
-## Learning Laravel
+## Store Overtimes API
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- Open Postman
+- Make sure have 1 data employee minimum
+- Change method to POST and enter url http://127.0.0.1:8000/api/overtimes
+- Put Parameter on Body > form-data > employee_id (foreign of employee, ex: 1), date (date format 'Y-m-d', ex: 2022-09-03), time_started (time format 'H:i:s', ex: 19:00:00), time_ended (time format 'H:i:s', ex: 21:00:00)
+- Click send to store new Overtimes
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Update / Patch Settings API
 
-## Laravel Sponsors
+- Open Postman
+- Change method to POST and enter url http://127.0.0.1:8000/api/settings?_method=PATCH
+- Put Parameter on Body > form-data > key (specific string, ex: overtime_method) and value (foreign references id, ex: 2)
+- Click send to update settings
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## GET Overtimes Pays Calculation
 
-### Premium Partners
+- Open Postman
+- Change method to POST and enter url http://127.0.0.1:8000/api/overtime-pays/calculate?_method=GET
+- Put Parameter on Body > form-data > month (date format 'Y-m', ex: 2022-09)
+- Click get overtimes pays calculation
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+## How to Run Test
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- Run php artisan test
